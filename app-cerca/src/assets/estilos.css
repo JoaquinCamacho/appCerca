@@ -1,0 +1,21 @@
+@import "tailwindcss";
+
+.titulo{
+    font-family: "Outfit", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+}
+.texto{
+    font-family: "Outfit", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+@theme{
+    --color-banner: #F9C3AA;
+    --color-rosa: #F39A9D;
+    --color-celeste: #54B7C8;
+    --color-card:#F4F4F4;
+}
