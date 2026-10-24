@@ -5,12 +5,20 @@ import Perfil from "@/views/cliente/Perfil.vue";
 import Search from "@/views/cliente/Search.vue";
 import Servicios from "@/views/cliente/Servicios.vue";
 import Solicitudes from "@/views/cliente/Solicitudes.vue";
+import InicioView from "@/views/auth/InicioView.vue";
+
 import { createRouter, createWebHashHistory } from "vue-router";
 
 const router = createRouter({
     history: createWebHashHistory(),
     
-    routes:[{
+    routes:[
+    {
+        path:"/",
+        name:InicioView,
+        component:InicioView
+    },    
+    {
         path:"/cliente",
         name:"cliente-home",
         component:HomeView,
