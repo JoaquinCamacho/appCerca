@@ -6,6 +6,7 @@ import Search from "@/views/cliente/Search.vue";
 import Servicios from "@/views/cliente/Servicios.vue";
 import Solicitudes from "@/views/cliente/Solicitudes.vue";
 import InicioView from "@/views/auth/InicioView.vue";
+import RegistroDatosView from "@/views/auth/RegistroDatosView.vue";
 
 import { createRouter, createWebHashHistory } from "vue-router";
 
@@ -16,27 +17,39 @@ const router = createRouter({
     {
         path:"/",
         name:InicioView,
-        component:InicioView
-    },    
+        component:InicioView,
+        meta:{mostrarNavbar:true}
+
+    },
+    {
+        path:"/registro/datos",
+        name:RegistroDatosView,
+        component:RegistroDatosView,
+        meta:{mostrarNavbar:true}
+    },  
     {
         path:"/cliente",
         name:"cliente-home",
         component:HomeView,
+
     },
     {
         path:"/cliente/servicios/:tipo",
         name:"servicios-cliente",
-        component:Servicios
+        component:Servicios,
+
     },
     {
         path:"/cliente/favoritos",
         name:"favoritos-cliente",
-        component:Favoritos
+        component:Favoritos,
+
     },
     {
         path:"/cliente/solicitudes",
         name:"cliente-solicitudes",
-        component:Solicitudes
+        component:Solicitudes,
+
     },
     {
         path:"/cliente/perfil",

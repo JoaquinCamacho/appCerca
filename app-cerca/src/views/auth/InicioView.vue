@@ -3,7 +3,7 @@
 <template>
 
         
-        <main class="bg-[url('/src/assets/images/background.png')] min-h-dvh  bg-cover bg-center bg-no-repeat pb-30">
+        <main class="bg-[url('/src/assets/images/background.png')] min-h-dvh  bg-cover bg-center bg-no-repeat ">
 
             <div class="py-25 flex text-center justify-center">
 
@@ -14,7 +14,11 @@
                         <RouterLink class="bg-banner w-28 py-4 titulo rounded-lg shadow-lg" to="">Cuidador</RouterLink>
                         <RouterLink class="bg-banner w-28 py-4 titulo rounded-lg shadow-lg" to="">Cliente</RouterLink>
                     </div>
+
+                    <RouterLink class="titulo ">¿Ya tenes cuenta?</RouterLink>
+                
                 </div>
+
 
             
                 
