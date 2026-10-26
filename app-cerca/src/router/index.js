@@ -7,8 +7,10 @@ import Servicios from "@/views/cliente/Servicios.vue";
 import Solicitudes from "@/views/cliente/Solicitudes.vue";
 import InicioView from "@/views/auth/InicioView.vue";
 import RegistroDatosView from "@/views/auth/RegistroDatosView.vue";
+import RegistroClienteView from "@/views/auth/RegistroClienteView.vue";
 
 import { createRouter, createWebHashHistory } from "vue-router";
+import RegistroCuidadorView from "@/views/auth/RegistroCuidadorView.vue";
 
 const router = createRouter({
     history: createWebHashHistory(),
@@ -16,17 +18,27 @@ const router = createRouter({
     routes:[
     {
         path:"/",
-        name:InicioView,
+        name:"inicio-view",
         component:InicioView,
         meta:{mostrarNavbar:true}
 
     },
     {
         path:"/registro/datos",
-        name:RegistroDatosView,
+        name:"registro-datos",
         component:RegistroDatosView,
         meta:{mostrarNavbar:true}
-    },  
+    },
+    {
+        path:"/registro/cliente",
+        name:"registro-cliente",
+        component:RegistroClienteView,
+    },
+    {
+        path:"/registro/cuidador",
+        name:"registro-cuidador",
+        component:RegistroCuidadorView,
+    },
     {
         path:"/cliente",
         name:"cliente-home",

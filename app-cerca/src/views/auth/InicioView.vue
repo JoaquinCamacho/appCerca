@@ -1,4 +1,15 @@
-<script setup></script>
+<script setup>
+
+import { useRouter } from 'vue-router';
+const router = useRouter()
+
+function rolElegido(rol){
+    sessionStorage.setItem('rolRegistrado', rol)
+    router.push('/registro/datos')
+}
+
+
+</script>
 
 <template>
 
@@ -11,11 +22,11 @@
                     <img class="w-30 pb-15" src="../../assets/images/logoInicio.png" alt="Logo">
 
                     <div class="flex justify-around w-full ">
-                        <RouterLink class="bg-banner w-28 py-4 titulo rounded-lg shadow-lg" to="">Cuidador</RouterLink>
-                        <RouterLink class="bg-banner w-28 py-4 titulo rounded-lg shadow-lg" to="">Cliente</RouterLink>
+                        <button @click="rolElegido('cuidador')" class="bg-banner w-28 py-4 titulo rounded-lg shadow-lg text-xl" >Cuidador</button>
+                        <button @click="rolElegido('cliente')"  class="bg-banner w-28 py-4 titulo rounded-lg shadow-lg text-xl" >Cliente</button>
                     </div>
 
-                    <RouterLink class="titulo ">¿Ya tenes cuenta?</RouterLink>
+                    <RouterLink class="titulo text-xl">¿Ya tenes cuenta?</RouterLink>
                 
                 </div>
 
