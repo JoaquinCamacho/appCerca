@@ -1,12 +1,13 @@
 <script setup>
 import ButtonBack from '@/components/ButtonBack.vue';
 import { useRoute } from 'vue-router';
-import { supabase } from '../../../supabase';
+import { supabase } from '../../../supabase.js';
 import { ref,onMounted } from 'vue';
 
 const route = useRoute()
 
 const tipoServicio = route.params.tipo
+
 const servicios = {
     mandados: 1,
     cuidados: 2,
@@ -23,6 +24,8 @@ async function obtenerCuidadores() {
         .select(`
             id,
             archivo,
+            edad,
+            presentacion,
             Usuarios (
                 id,
                 nombre,
@@ -34,6 +37,8 @@ async function obtenerCuidadores() {
 
     console.log('Cuidadores con usuarios:', data)
     console.log('Error:', error)
+
+    cuidadores.value = data
 }
 
 onMounted(() => {
@@ -43,10 +48,10 @@ onMounted(() => {
 
 <template>
 
-    <main class="bg-[url('/src/assets/images/background.png')] min-h-dvh  bg-cover bg-center bg-no-repeat">
+    <main class="bg-[url('/src/assets/images/background.png')] min-h-dvh  bg-cover bg-center bg-no-repeat  pb-24">
         <ButtonBack/>
 
-        <div class="flex flex-col gap-4 bg-white p-5 rounded-xl mx-5 mt-5  shadow-xl">
+        <div class="flex flex-col gap-4 bg-white p-5 rounded-xl mx-5   shadow-xl mb-20">
 
             <h2 class="titulo text-2xl">Estas son algunas de las opciones:</h2>
 
@@ -59,7 +64,8 @@ onMounted(() => {
                     <img class="rounded-full size-20 object-cover shrink-0" :src="cuidador.Usuarios.foto_perfil" alt="foto del cuidador">
 
                     <div class="flex flex-col ml-5">
-                        <h3 class="text-xl titulo">{{ cuidador.Usuarios.nombre  }} {{ cuidador.Usuarios.apellido }}</h3>
+                        <h3 class="text-lg titulo">{{ cuidador.Usuarios.nombre  }} {{ cuidador.Usuarios.apellido }}</h3>
+                        <h4 class="text- titulo">{{ cuidador.edad }} Años</h4>
                         
                     </div>
 

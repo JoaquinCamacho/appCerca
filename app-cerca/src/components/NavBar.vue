@@ -13,7 +13,7 @@ const ruta = useRoute()
 
 <template>
     
-    <div class="bg-card rounded-t-xl h-18  fixed bottom-0 w-full flex justify-around items-center pb-safe">
+    <div class="bg-card rounded-t-xl h-18  fixed bottom-0 w-full flex justify-around items-center pb-safe ">
             <RouterLink class="size-12" to="/cliente/favoritos">
                 <div class="bg-card  p-3 rounded-full transition-transform duration-200 items-center"
                     :class="ruta.path === '/cliente/favoritos' ? 'text-rosa -translate-y-3 shadow-lg shadow-black/30  ' : 'text-celeste'">
