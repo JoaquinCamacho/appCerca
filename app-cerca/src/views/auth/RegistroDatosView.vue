@@ -2,18 +2,38 @@
 import ButtonBack from '@/components/ButtonBack.vue';
 import { User } from 'lucide-vue-next';
 import { useRouter } from 'vue-router';
+import { ref } from 'vue'
 
 const router = useRouter()
 const rol = sessionStorage.getItem('rolRegistrado')
 
-function continuarRegistro(){
+
+const nombre = ref('')
+const apellido = ref('')
+const gmail = ref('')
+const password = ref('')
+
+function continuarRegistro() {
+    if (!nombre.value || !apellido.value || !gmail.value || !password.value) {
+    alert('Completá todos los campos')
+    return
+    }
+
+    console.log({
+    nombre: nombre.value,
+    apellido: apellido.value,
+    gmail: gmail.value,
+    rol,
+    })
+
     if(rol === 'cliente'){
         router.push('/registro/cliente')
     }
     else if(rol === 'cuidador'){
         router.push('/registro/cuidador')
-    }
 }
+}
+
 
 
 </script>
@@ -29,10 +49,10 @@ function continuarRegistro(){
             <form action="" class="mx-6 mt-8 bg-white flex flex-col justify-center items-center gap-8  w-full px-4 pb-10 shadow-lg rounded-xl">
 
 
-                <input class="bg-card p-2 rounded-lg inset-shadow-sm w-full titulo" type="text" placeholder="Nombre">
-                <input class="bg-card p-2 rounded-lg inset-shadow-sm w-full titulo" type="text" placeholder="Apellido">
-                <input class="bg-card p-2 rounded-lg inset-shadow-sm w-full titulo" type="text" placeholder="Gmail">
-                <input class="bg-card p-2 rounded-lg inset-shadow-sm w-full titulo" type="text" placeholder="Contraseña">
+                <input v-model="nombre" class="bg-card p-2 rounded-lg inset-shadow-sm w-full titulo" type="text" placeholder="Nombre">
+                <input v-model="apellido" class="bg-card p-2 rounded-lg inset-shadow-sm w-full titulo" type="text" placeholder="Apellido">
+                <input v-model="gmail" class="bg-card p-2 rounded-lg inset-shadow-sm w-full titulo" type="email" placeholder="Gmail">
+                <input v-model="password" class="bg-card p-2 rounded-lg inset-shadow-sm w-full titulo" type="password" placeholder="Contraseña">
                 
                 <button type="button" @click="continuarRegistro" class="titulo bg-banner py-3 px-5 rounded-lg text-xl">
                     Siguiente

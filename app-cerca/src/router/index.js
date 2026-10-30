@@ -33,6 +33,8 @@ const router = createRouter({
         path:"/registro/cliente",
         name:"registro-cliente",
         component:RegistroClienteView,
+        meta:{mostrarNavbar:true}
+
     },
     {
         path:"/registro/cuidador",
