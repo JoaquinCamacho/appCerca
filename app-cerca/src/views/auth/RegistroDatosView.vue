@@ -3,6 +3,7 @@ import ButtonBack from '@/components/ButtonBack.vue';
 import { User } from 'lucide-vue-next';
 import { useRouter } from 'vue-router';
 import { ref } from 'vue'
+import { supabase } from '../../../supabase.js';
 
 const router = useRouter()
 const rol = sessionStorage.getItem('rolRegistrado')
@@ -13,18 +14,41 @@ const apellido = ref('')
 const gmail = ref('')
 const password = ref('')
 
-function continuarRegistro() {
+async function continuarRegistro() {
     if (!nombre.value || !apellido.value || !gmail.value || !password.value) {
     alert('Completá todos los campos')
     return
     }
 
-    console.log({
-    nombre: nombre.value,
-    apellido: apellido.value,
-    gmail: gmail.value,
-    rol,
+    const { data, error } = await supabase.auth.signUp({
+        email: gmail.value,
+        password: password.value
     })
+
+    if (error) {
+        alert(error.message)
+        return
+    }
+
+    console.log('Usuario registrado:', data)
+
+    const idRol = rol === 'cliente' ? 1 : 2
+
+const { error: errorUsuario } = await supabase
+    .from('Usuarios')
+    .update({
+        nombre: nombre.value,
+        apellido: apellido.value,
+        id_rol: idRol
+    })
+    .eq('id_auth', data.user.id)
+
+if (errorUsuario) {
+    console.error('Error al guardar los datos:', errorUsuario)
+    alert(errorUsuario.message)
+    return
+}
+
 
     if(rol === 'cliente'){
         router.push('/registro/cliente')
